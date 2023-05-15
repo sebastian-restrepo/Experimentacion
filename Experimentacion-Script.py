@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import joblib
 from typing import Union
 import os
+import gc
 
 
 # %%
@@ -32,8 +33,8 @@ class DataTaker:
                 pass
             if time.time()-tiempo_inicio>3 and np.var(datos[2500:])<1000:
                 break
+        gc.collect()
         self.arduino.close()
-        
         return np.array(datos)
 
 
@@ -68,7 +69,7 @@ class DataTaker:
 e =joblib.load(r"C:\Users\Usuario\Desktop\Cosas U\5to Semestre\Simulación Computacional\Códigos Computación\Datalake\signatures\Jose.pkl")
 
 # %%
-len(e["s1"])
+#len(e["s1"])
 
 # %%
 reader = DataTaker()
@@ -79,53 +80,53 @@ reader("Jose")
 reader.plot("Jose")
 
 # %%
-nombres = ["a", "b", "a"]
+#nombres = ["a", "b", "a"]
 
 # %%
-set(nombres)
+#set(nombres)
 
 # %%
-largoTiempo = len(datos)
-datosLimpios = []
-tiempo = np.arange(0,largoTiempo)
+# largoTiempo = len(datos)
+# datosLimpios = []
+# tiempo = np.arange(0,largoTiempo)
 # for i in range(len(datos)):
 #     LuisFernandoMoreno = datos[i].decode('UTF-8')
 #     LuisFernandoMoreno = LuisFernandoMoreno.translate( { ord(i): None for i in '\n'} )
 #     datosLimpios.append(int(LuisFernandoMoreno))
-datosLimpiosAhoraSi = np.array(datos).T
+#datosLimpiosAhoraSi = np.array(datos).T
 
 # %%
 
-plt.title("Aceleración VS Tiempo")
-plt.xlabel("Tiempo (s)")
-plt.ylabel("Aceleración (cm/s)")
-plt.plot(tiempo/1000,datosLimpiosAhoraSi-np.mean(datosLimpiosAhoraSi))
-#plt.ylim(-50000,50000)
-plt.show()
+# plt.title("Aceleración VS Tiempo")
+# plt.xlabel("Tiempo (s)")
+# plt.ylabel("Aceleración (cm/s)")
+# plt.plot(tiempo/1000,datosLimpiosAhoraSi-np.mean(datosLimpiosAhoraSi))
+# #plt.ylim(-50000,50000)
+# plt.show()
 
 # %%
-arduino = serial.Serial('COM6', 115200)
-arduino.close()
+# arduino = serial.Serial('COM6', 115200)
+# arduino.close()
 
-# %%
-len(datos)
+# # %%
+# len(datos)
 
-# %%
-np.var(datos[3000:])
+# # %%
+# np.var(datos[3000:])
 
-# %%
-datos[3000:]
+# # %%
+# datos[3000:]
 
-# %%
-import serial, time
-import numpy as np
-import matplotlib.pyplot as plt
+# # %%
+# import serial, time
+# import numpy as np
+# import matplotlib.pyplot as plt
 
-# %%
-arduino.close()
+# # %%
+# arduino.close()
 
 
-# %%
+# # %%
 
 
 
